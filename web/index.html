@@ -38,13 +38,15 @@
 <body>
   <script>
     window.addEventListener('load', function(ev) {
-      // Download main.dart.js
-      _flutter.loader.loadEntrypoint({
-        serviceWorkerVersion: 'flutter_service_worker_version',
+  _flutter.loader.load({
+  config: userConfig,
+  serviceWorkerSettings: {
+    serviceWorkerVersion: {{flutter_service_worker_version}},
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
             appRunner.runApp();
           });
+        }
         }
       });
     });
